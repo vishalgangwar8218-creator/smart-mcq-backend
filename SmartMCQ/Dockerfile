@@ -4,8 +4,8 @@ WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Step 2: Java 17 runtime par app run karo
-FROM openjdk:17-jdk-slim
+# Step 2: Eclipse Temurin (Java 17) runtime par app run karo
+FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
